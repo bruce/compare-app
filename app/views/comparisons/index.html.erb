@@ -1,0 +1,20 @@
+<h2>Comparisons</h2>
+
+<p><%= link_to "New Comparison", new_comparison_path %></p>
+
+<table id='comparisons'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Exit Code</th>
+      <th>Standard Output</th>
+      <th>Standard Error</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render :partial => @comparisons %>
+  </tbody>
+</table>
+      
+      

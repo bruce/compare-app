@@ -1,0 +1,7 @@
+  [4;36;1mComparison Create (0.000621)[0m   [0;1mINSERT INTO comparisons ("name", "updated_at", "code", "description", "created_at") VALUES('Simple output', '2008-01-12 23:45:12', 'puts 1', NULL, '2008-01-12 23:45:12')[0m
+  [4;35;1mResult Load (0.000250)[0m   [0mSELECT * FROM results WHERE (results.comparison_id = 1) [0m
+  [4;36;1mComparison Create (0.000621)[0m   [0;1mINSERT INTO comparisons ("name", "updated_at", "code", "description", "created_at") VALUES('Simple output', '2008-01-12 23:46:54', 'puts 1', NULL, '2008-01-12 23:46:54')[0m
+  [4;35;1mResult Load (0.000235)[0m   [0mSELECT * FROM results WHERE (results.comparison_id = 1) [0m
+  [4;36;1mResult Create (0.000357)[0m   [0;1mINSERT INTO results ("stdout", "updated_at", "stderr", "exit_code", "comparison_id", "version", "created_at") VALUES('1', '2008-01-12 23:46:54', '', 0, 1, '1.8', '2008-01-12 23:46:54')[0m
+  [4;35;1mResult Create (0.000370)[0m   [0mINSERT INTO results ("stdout", "updated_at", "stderr", "exit_code", "comparison_id", "version", "created_at") VALUES('1', '2008-01-12 23:46:54', '', 0, 1, '1.9', '2008-01-12 23:46:54')[0m
+  [4;36;1mSQL (0.000405)[0m   [0;1mSELECT count(*) AS count_all FROM results WHERE (results.comparison_id = 1) [0m

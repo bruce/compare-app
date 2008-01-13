@@ -1,0 +1,7 @@
+<tr>
+  <td><%= link_to comparison.name, comparison %></td>
+  <td><%= truncate(comparison.description) unless comparison.description.blank? %></td>
+  <td><%= comparison.same?(:exit_code) ? 'Same' : 'Different' %></td>
+  <td><%= comparison.same?(:stdout) ? 'Same' : 'Different' %></td>
+  <td><%= comparison.same?(:stderr) ? 'Same' : 'Different' %></td>
+</tr>

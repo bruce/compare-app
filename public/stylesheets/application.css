@@ -1,0 +1,79 @@
+body {
+	margin: 0;
+	background: #fff;
+	color: #000;
+	font-family: sans-serif;
+}
+
+form ul {
+	list-style: none;
+}
+
+dt {
+	clear: left;
+	float: left;
+	width: 3em;
+	text-align: right;
+	margin-right: 1em;
+	font-family: monospace;
+	background: #e6e6e6;
+	border-bottom: 1px #bbb solid;
+	padding: 2px;
+	color: #666;
+}
+dd {
+	padding: 2px;
+	margin-left: 3em;
+	white-space: pre;
+	font-family: monospace;
+	border-bottom: 1px #e6e6e6 solid;
+	border-right: 1px #e6e6e6 solid;
+}
+thead th {
+	background: #ffffcc;
+	text-align: center;
+	color: #fab444;
+}
+tr#versions th {
+	font-size: 1.2em;
+	color: red;
+}
+tr#versions .hide {
+	background: transparent;
+}
+tr#exit_code td {
+	text-align: center;
+}
+tr#exit_code td.bad {
+	background: red;
+}
+tr#exit_code td.good {
+	background: green;
+}
+
+tbody th {
+  color: #666;	
+  text-align: right;
+}
+#content {
+	padding: 2em;
+}
+table {
+	width: 100%;
+}
+.code_error {
+	color: red;
+	font-weight: bold;
+}
+.error {
+	color: red;
+}
+tr#stderr td, tr#stdout td {
+	vertical-align: top;
+}
+tr#stderr td.blank, tr#stdout td.blank {
+	background: #e6e6e6;
+	border-bottom: 1px #ddd solid;
+	color: #666;
+	vertical-align: middle;
+	text-align: center;}

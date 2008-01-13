@@ -1,0 +1,43 @@
+<h2><%= @comparison.name %></h2>
+
+<%= link_to "All Comparisons", comparisons_path %>
+<%= link_to "Edit this Comparison", edit_comparison_path %>
+
+
+<% unless @comparison.description.blank? %>
+  <div id='description'><%= textilize @comparison.description %></div>
+<% end %>
+
+<%= format_code @comparison.code, :id => :code %>
+
+<table>
+  <thead>
+    <tr id='versions'>
+      <th class='hide'>&nbsp;</th>
+      <% @comparison.results.each do |result| %>
+        <th><%= result.version %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id='exit_code'>
+      <th>Exit Code</th>
+      <% @comparison.results.each do |result| %>
+        <td class='<%= result.exit_code == 0 ? 'good' : 'bad' %>'><%= result.exit_code %></td>
+      <% end %>
+    </tr>
+    <tr id='stdout'>
+      <th>Standard Out</th>
+      <% @comparison.results.each do |result| %>
+        <%= show_output result.stdout  %>
+      <% end %>
+    </tr>
+    <tr id='stderr'>
+      <th>Standard Error</th>
+      <% @comparison.results.each do |result| %>
+        <%= show_output result.stderr %>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+      
