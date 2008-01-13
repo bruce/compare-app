@@ -2,6 +2,7 @@
 
 <%= link_to "All Comparisons", comparisons_path %>
 <%= link_to "Edit this Comparison", edit_comparison_path %>
+<%= link_to "Delete this Comparison", comparison_path, :method => :delete %>
 
 
 <% unless @comparison.description.blank? %>

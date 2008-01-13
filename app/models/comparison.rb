@@ -48,7 +48,7 @@ class Comparison < ActiveRecord::Base
   
   def result_for(executable)
     record = {}
-    status = Open4::popen4(executable) { |pid, stdin, stdout, stderr|
+    status = Open4::popen4(executable, '-w') { |pid, stdin, stdout, stderr|
       stdin.puts code
       stdin.close
       record.update(

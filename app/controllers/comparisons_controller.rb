@@ -34,4 +34,10 @@ class ComparisonsController < ApplicationController
     end
   end
   
+  def destroy
+    @comparison = Comparison.find(params[:id])
+    @comparison.destroy
+    redirect_to comparisons_path
+  end
+  
 end
