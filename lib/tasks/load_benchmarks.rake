@@ -2,8 +2,8 @@ namespace :benchmarks do
   
   task :load => :environment do
     files = Dir[File.dirname(__FILE__) << "/benchmark/*.rb"]
-    files.each do |file|
-      puts "Running `#{File.basename(file)}'..."
+    files.each_with_index do |file, offset|
+      puts "Running `#{File.basename(file)}' (#{offset + 1}/#{files.size})..."
       item = nil
       begin
         item = Comparison.create(
