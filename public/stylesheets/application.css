@@ -1,12 +1,16 @@
 body {
 	margin: 0;
-	background: #fff;
-	color: #000;
+	background: url(/images/body.png);
+	color: #fff;
 	font-family: sans-serif;
 }
 
 form ul {
 	list-style: none;
+}
+
+a, a:link, a:visited {
+	color: #000;
 }
 
 dt {
@@ -30,9 +34,13 @@ dd {
 	border-right: 1px #e6e6e6 solid;
 }
 thead th {
-	background: #ffffcc;
+	border-top: 1px #ffffcc solid;
+	border-bottom: 1px #ae9300 solid;
+	border-right: 1px #ae9300 solid;
+	background: url(/images/th.png);
 	text-align: center;
-	color: #fab444;
+	color: #000;
+	padding: 8px;
 }
 tr#versions th {
 	font-size: 1.2em;
@@ -52,7 +60,7 @@ tr#exit_code td.good {
 }
 
 tbody th {
-  color: #666;	
+  color: #000;	
   text-align: right;
 }
 #content {
@@ -77,3 +85,63 @@ tr#stderr td.blank, tr#stdout td.blank {
 	color: #666;
 	vertical-align: middle;
 	text-align: center;}
+.bars {
+	width: 90%;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.bars li {
+	font-size: 0.85em;
+	color: #fff;
+	padding: 3px;
+	margin: 1px;
+}
+.bars .winner {
+	background: #000;
+}
+.bars .loser {
+	background: #333;
+}
+.bars .time {
+	margin-left: 1em;
+	font-style: italic;
+}
+.bad-result {
+	background: url(/images/icons/error.png) center left no-repeat;
+	padding-left: 20px;
+	font-size: 0.9em;
+	color: red;
+	height: 20px;
+	vertical-align: middle;
+}
+.bars .winner {
+	background: url(/images/winner.png);
+	border: 1px #6e946f solid;
+	border-top: 1px #b1f8b3 solid;
+	border-left: 1px #b1f8b3 solid;
+	color: #000;
+}
+.bars .loser {
+	background: url(/images/loser.png);
+	border: 1px #9b4848 solid;
+	border-top: 1px #ffb2b2 solid;
+	border-left: 1px #ffb2b2 solid;
+	color: #fff;
+}
+#comparisons {
+	border-spacing: 0;
+}
+#comparisons .description {
+  color: #333;
+  font-size: 0.9em;
+  font-style: italic;
+  padding: 0;
+  margin: 4px 0 0 0;
+}
+#comparisons tbody tr td {
+	margin: 0;
+	background: url(/images/row.png) top left repeat-x;
+	height: 66px;
+	padding: 8px;
+}

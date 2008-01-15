@@ -7,4 +7,8 @@ var highlighter = function () {
 
 $(document).ready(function(){
    $("dd.code_error").hover(highlighter, highlighter);
+   $('a#show-code').toggle(
+	   function(){ $('#code').show(); },
+	   function(){ $('#code').hide(); }
+   );	
 });

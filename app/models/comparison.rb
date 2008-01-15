@@ -48,15 +48,27 @@ class Comparison < ActiveRecord::Base
   
   def result_for(executable)
     record = {}
-    status = Open4::popen4(executable, '-w') { |pid, stdin, stdout, stderr|
-      stdin.puts code
-      stdin.close
-      record.update(
-        :stdout => stdout.read.strip,
-        :stderr => stderr.read.strip
-      )
-    }
+    status = Open4::popen4(executable, '-w') do |pid, stdin, stdout, stderr|
+      benchmark = Benchmark.measure do
+        stdin.puts code
+        stdin.close
+      end
+      %w(stdout stderr).each do |channel|
+        output = eval "#{channel}.read.strip"
+        case output
+        when /[^[:print:]]/
+          record.update("binary_#{channel}" => true)
+        else
+          record.update(channel => output)
+        end
+      end
+      record.update(:benchmark => benchmark)
+    end
     record.merge(:exit_code => status.exitstatus.to_i)
+  end
+  
+  def binary?(string)
+    string =~ /[^[:print:]]/
   end
   
 end

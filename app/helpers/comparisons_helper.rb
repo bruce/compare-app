@@ -23,7 +23,7 @@ module ComparisonsHelper
       end
       classes << 'error' if in_error
       output << content_tag(:dt, offset + 1) <<
-                content_tag(:dd, line, :class => classes.join(' '))
+                content_tag(:dd, h(line), :class => classes.join(' '))
       in_error = false if options[:errors] && in_error && line =~ /\^/
     end
     output
@@ -35,6 +35,22 @@ module ComparisonsHelper
     else
       content_tag(:td, format_output(text))
     end
+  end
+  
+  def benchmark_info_for(comparison)
+    if (errors = comparison.results.select { |r| !r.success? }).any?
+      return content_tag(:span, "Error in #{errors.map(&:version).to_sentence}", :class => 'bad-result')
+    end
+    results = comparison.results.sort_by(&:real_time)
+    longest = results.last.real_time
+    content_tag(:ul,
+      results.map { |r|
+        percent = r.real_time / longest * 100
+        content_tag(:li, "#{r.version} <span class='time'>#{'%.8f' % r.real_time}s</span>",
+          :class => (r.id == results.first.id ? 'winner' : 'loser'),
+          :style => "width:#{percent}%;")
+      }.join,
+      :class => 'bars')
   end
     
 end

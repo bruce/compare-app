@@ -1,7 +1,9 @@
-<tr>
-  <td><%= link_to comparison.name, comparison %></td>
-  <td><%= truncate(comparison.description) unless comparison.description.blank? %></td>
-  <td><%= comparison.same?(:exit_code) ? 'Same' : 'Different' %></td>
-  <td><%= comparison.same?(:stdout) ? 'Same' : 'Different' %></td>
-  <td><%= comparison.same?(:stderr) ? 'Same' : 'Different' %></td>
+<tr class='<%= cycle *%w(odd even) %>'>
+  <td>
+    <%= link_to comparison.name, comparison %>
+    <% unless comparison.description.blank? %>
+      <p class='description'><%= truncate(comparison.description) %></p>
+    <% end %>
+  </td>
+  <td><%= benchmark_info_for comparison %></td>
 </tr>

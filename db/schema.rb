@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 3) do
+ActiveRecord::Schema.define(:version => 5) do
 
   create_table "comparisons", :force => true do |t|
     t.string   "name"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(:version => 3) do
     t.integer  "exit_code"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "user_cpu_time",         :default => 0.0
+    t.float    "system_cpu_time",       :default => 0.0
+    t.float    "child_user_cpu_time",   :default => 0.0
+    t.float    "child_system_cpu_time", :default => 0.0
+    t.float    "real_time",             :default => 0.0
+    t.boolean  "binary_stdout",         :default => false
+    t.boolean  "binary_stderr",         :default => false
   end
 
 end
