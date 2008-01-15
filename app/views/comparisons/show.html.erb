@@ -1,45 +1,34 @@
 <h2><%= @comparison.name %></h2>
 
-<%= link_to "All Comparisons", comparisons_path %>
-<%= link_to "Edit this Comparison", edit_comparison_path %>
-<%= link_to "Delete this Comparison", comparison_path, :method => :delete %>
-
+<ul class='actions'>
+  <li><%= link_to "All Comparisons", comparisons_path, :class => 'icon up' %></li>
+  <li><%= link_to "Edit this", edit_comparison_path, :class => 'icon edit' %></li>
+  <li><%= link_to "Delete this", comparison_path, :method => :delete, :class => 'icon delete' %></li>
+</ul>
 
 <% unless @comparison.description.blank? %>
   <div id='description'><%= textilize @comparison.description %></div>
 <% end %>
 
-<p><%= link_to "Show Code", '', :id => 'show-code' %></p>
+<p><%= link_to "Show Code", '', :id => 'show-code', :class => 'icon show-code' %></p>
 <%= format_code @comparison.code, :id => :code, :style => 'display:none;' %>
 
-<table>
+<table id='comparison'>
   <thead>
-    <tr id='versions'>
-      <th class='hide'>&nbsp;</th>
-      <% @comparison.results.each do |result| %>
-        <th><%= result.version %></th>
-      <% end %>
+    <tr>
+      <th>Version</th>
+      <th>Output</th>
+      <th>Errors</th>
     </tr>
   </thead>
   <tbody>
-    <tr id='exit_code'>
-      <th>Exit Code</th>
-      <% @comparison.results.each do |result| %>
-        <td class='<%= result.exit_code == 0 ? 'good' : 'bad' %>'><%= result.exit_code %></td>
-      <% end %>
-    </tr>
-    <tr id='stdout'>
-      <th>Standard Out</th>
-      <% @comparison.results.each do |result| %>
-        <%= show_output result.stdout  %>
-      <% end %>
-    </tr>
-    <tr id='stderr'>
-      <th>Standard Error</th>
-      <% @comparison.results.each do |result| %>
-        <%= show_output result.stderr %>
-      <% end %>
-    </tr>
+    <% @comparison.results.each do |result| %>
+      <tr>
+        <td class='version <%= result.success? ? 'success' : 'failure' %>'><%= result.version %><%= benchmark_info_for(*@comparison.results.dup.push(:only => result)) %></td>
+        <%= show_output result.stdout, :class => 'stdout' %>
+        <%= show_output result.stderr, :class => 'stdout' %>
+      </tr>
+    <% end %>
   </tbody>
 </table>
       

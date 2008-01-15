@@ -1,7 +1,12 @@
+require 'paginator'
+
 class ComparisonsController < ApplicationController
   
   def index
-    @comparisons = Comparison.find(:all)
+    @pager = Paginator.new(Comparison.count, 10) do |offset, per_page|
+      Comparison.find(:all, :include => :results, :limit => per_page, :offset => offset)
+    end
+    @page = @pager.page(params[:page])
   end
   
   def new

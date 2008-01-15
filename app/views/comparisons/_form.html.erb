@@ -1,23 +1,25 @@
 <%= error_messages_for :comparison %>
 <% form_for @comparison, :html => {:multipart => true} do |f| %>
-  <ul>
-    <li>
-      <label for='comparison_name'>Name:</label>
-      <%= f.text_field :name %>
-    </li>
-    <li>
-      <label for='comparison_description'>Description</label><br/>
-      <%= f.text_area :description, :cols => 80, :rows => 5 %>
-    </li>
-    <li>
-      <label for='comparison_code'>Code</label><br/>
-      <%= f.text_area :code, :cols => 80, :rows => 5 %><br>
-      <p>
-        or upload a file:
-        <%= f.file_field :file %>
-      </p>
-    </li>
-    <p>The code will be executed on Ruby <%= Comparison::VERSIONS.keys.sort.to_sentence %>.</p>
-    <%= submit_tag "Save" %>
-  </ul>
+  <fieldset>
+    <ul>
+      <li>
+        <label for='comparison_name'>Name:</label>
+        <%= f.text_field :name %>
+      </li>
+      <li>
+        <label for='comparison_description'>Description</label><br/>
+        <%= f.text_field :description, :size => 80 %>
+      </li>
+      <li>
+        <label for='comparison_code'>Code</label><br/>
+        <%= f.text_area :code, :cols => 80, :rows => 5 %><br>
+        <p>
+          or upload a file:
+          <%= f.file_field :file %>
+        </p>
+      </li>
+      <p class='note'>The code will be executed on Ruby <%= Comparison::VERSIONS.keys.sort.to_sentence %>.</p>
+      <%= submit_tag "Save" %>
+    </ul>
+  </fieldset>
 <% end %>

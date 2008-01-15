@@ -1,9 +1,9 @@
 <tr class='<%= cycle *%w(odd even) %>'>
-  <td>
+  <td class='name'>
     <%= link_to comparison.name, comparison %>
     <% unless comparison.description.blank? %>
       <p class='description'><%= truncate(comparison.description) %></p>
     <% end %>
   </td>
-  <td><%= benchmark_info_for comparison %></td>
+  <td class='performance'><%= benchmark_info_for(*comparison.results) %></td>
 </tr>

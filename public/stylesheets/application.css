@@ -10,7 +10,7 @@ form ul {
 }
 
 a, a:link, a:visited {
-	color: #000;
+	color: #fff;
 }
 
 dt {
@@ -20,21 +20,30 @@ dt {
 	text-align: right;
 	margin-right: 1em;
 	font-family: monospace;
-	background: #e6e6e6;
-	border-bottom: 1px #bbb solid;
+	border-bottom: 1px #333 solid;
+	border-right: 1px #333 dashed;
+	
 	padding: 2px;
-	color: #666;
+	color: #ccc;
 }
 dd {
 	padding: 2px;
 	margin-left: 3em;
 	white-space: pre;
 	font-family: monospace;
-	border-bottom: 1px #e6e6e6 solid;
-	border-right: 1px #e6e6e6 solid;
+	border-bottom: 1px #333 solid;
 }
+table dt {
+	color: #000;
+}
+table dd, table dt {
+	border-bottom: 1px #ccc solid;
+	border-right: 1px #ccc dashed;
+}
+
 thead th {
 	border-top: 1px #ffffcc solid;
+	border-left: 1px #ffffcc solid;
 	border-bottom: 1px #ae9300 solid;
 	border-right: 1px #ae9300 solid;
 	background: url(/images/th.png);
@@ -47,6 +56,7 @@ tr#versions th {
 	color: red;
 }
 tr#versions .hide {
+	border: 0;
 	background: transparent;
 }
 tr#exit_code td {
@@ -59,16 +69,27 @@ tr#exit_code td.good {
 	background: green;
 }
 
+input[type=text], textarea {
+	background: #000;
+	border: 1px #333 solid;
+	color: #fff;
+	font-size: 0.95em;
+	padding: 4px;
+}
+textarea {
+	padding: 8px;
+}
+
 tbody th {
   color: #000;	
   text-align: right;
+  color: #fff;
+  font-size: 0.85em;
 }
 #content {
 	padding: 2em;
 }
-table {
-	width: 100%;
-}
+
 .code_error {
 	color: red;
 	font-weight: bold;
@@ -79,10 +100,10 @@ table {
 tr#stderr td, tr#stdout td {
 	vertical-align: top;
 }
-tr#stderr td.blank, tr#stdout td.blank {
-	background: #e6e6e6;
-	border-bottom: 1px #ddd solid;
-	color: #666;
+td.blank {
+	color: #333;
+	font-size: 0.8em;
+	font-style: italic;
 	vertical-align: middle;
 	text-align: center;}
 .bars {
@@ -105,7 +126,6 @@ tr#stderr td.blank, tr#stdout td.blank {
 }
 .bars .time {
 	margin-left: 1em;
-	font-style: italic;
 }
 .bad-result {
 	background: url(/images/icons/error.png) center left no-repeat;
@@ -129,9 +149,86 @@ tr#stderr td.blank, tr#stdout td.blank {
 	border-left: 1px #ffb2b2 solid;
 	color: #fff;
 }
-#comparisons {
-	border-spacing: 0;
+.bars-with-errors .winner, .bars-with-errors .loser {
+	background: #bbb;
+	border-top: 1px #ddd solid;
+	border-right: 1px #ddd solid;
+	border-bottom: 1px #666 solid;
+	border-left: 1px #666 solid;
+	color: #444;
 }
+table a {
+	color: #000;
+}
+a.add {
+	background: url(/images/icons/add.png) center left no-repeat;
+	padding-left: 20px;
+	font-size: 0.9em;
+	color: #c6ffb2;
+	line-height: 20px;
+	height: 20px;
+	vertical-align: middle;
+}
+.icon {
+	padding-left: 20px;
+	font-size: 0.9em;
+	height: 20px;
+	line-height: 20px;
+	vertical-align: middle;
+}
+ul.actions {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	height: 28px;
+}
+ul.actions li {
+	float: left;
+	margin-right: 1em;
+}
+a.icon {
+	color: #c6ffb2;
+}
+a.show {
+	background: url(/images/icons/magnifier.png) center left no-repeat;
+}
+a.up {
+	background: url(/images/icons/arrow_up.png) center left no-repeat;
+}
+a.show-code {
+	background: url(/images/icons/keyboard_magnify.png) center left no-repeat;
+}
+a.edit {
+	background: url(/images/icons/script_edit.png) center left no-repeat;
+}
+a.delete {
+	color: red;
+	background: url(/images/icons/bin_closed.png) center left no-repeat;
+}
+#comparisons, #comparison {
+	border-spacing: 0;
+	width: 100%;
+	color: #000;
+}
+#comparisons td.name, #comparison td.version {
+	text-align: center;
+}
+#comparisons td, #comparison td {
+	border-left: 1px #ddd solid;
+	border-right: 1px #666 solid;
+}
+
+#comparisons td.name a {
+  color: #000;
+  font-size: 1.1em;
+}
+#comparison td.version {
+	font-size: 1.5em;
+}
+#comparison td.version .bars {
+  font-size: 8pt;
+}
+
 #comparisons .description {
   color: #333;
   font-size: 0.9em;
@@ -139,9 +236,48 @@ tr#stderr td.blank, tr#stdout td.blank {
   padding: 0;
   margin: 4px 0 0 0;
 }
-#comparisons tbody tr td {
+tbody tr td {
 	margin: 0;
-	background: url(/images/row.png) top left repeat-x;
+	background: #616161 url(/images/row.png) top left repeat-x;
 	height: 66px;
 	padding: 8px;
+}
+
+fieldset {
+	padding: 1px;
+	background: #141414 url(/images/form.png) top left repeat-x;
+	border: 0;
+	border-top: 1px #ccc solid;
+}
+fieldset li {
+	margin-bottom: 0.25em;
+}
+fieldset .note {
+	font-size: 0.8em;
+	color: #ccc;
+	background: url(/images/icons/cog_go.png) center left no-repeat;
+	padding-left: 20px;
+	height: 20px;
+	line-height: 20px;
+	vertical-align: middle;
+}
+label {
+	font-size: 0.9em;
+}
+
+#description {
+	font-size: 0.8em;
+	color: #ccc;
+}
+
+table dd.error {
+	color: #000;
+	border-bottom: 1px red solid;
+}
+
+td[class="version success"] {
+	background: #61c261 url(/images/version_success.png) top left repeat-x;
+}
+td[class="version failure"] {
+	background: #c26161 url(/images/version_failure.png) top left repeat-x;
 }

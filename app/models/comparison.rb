@@ -7,7 +7,7 @@ class Comparison < ActiveRecord::Base
     '1.9' => '/usr/local/bin/ruby1.9'
   }
   
-  has_many :results, :order => 'version asc'
+  has_many :results, :order => 'version asc', :dependent => :destroy
   
   validates_presence_of :name
   validates_presence_of :code
@@ -53,18 +53,20 @@ class Comparison < ActiveRecord::Base
         stdin.puts code
         stdin.close
       end
-      %w(stdout stderr).each do |channel|
-        output = eval "#{channel}.read.strip"
-        case output
-        when /[^[:print:]]/
-          record.update("binary_#{channel}" => true)
-        else
-          record.update(channel => output)
-        end
-      end
+      save_output_from(:stdout, stdout, record)
+      save_output_from(:stderr, stderr, record)
       record.update(:benchmark => benchmark)
     end
     record.merge(:exit_code => status.exitstatus.to_i)
+  end
+  
+  def save_output_from(name, channel, record={})
+    case output = channel.read.strip
+    when /[^[:print:][:cntrl:]]/
+      record.update("binary_#{name}" => true)
+    else
+      record.update(name => output)
+    end        
   end
   
   def binary?(string)
