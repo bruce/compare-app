@@ -2,16 +2,4 @@
 
 <ul class='actions'><li><%= link_to "Add Comparison", new_comparison_path, :class => 'add' %></li></ul>
 
-<% if @page.items.any? %>
-  <table id='comparisons'>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Performance</th>      
-      </tr>
-    </thead>
-    <tbody>
-      <%= render :partial => @page.items %>
-    </tbody>
-  </table>
-<% end %>
+<%= render :partial => 'comparisons' %>

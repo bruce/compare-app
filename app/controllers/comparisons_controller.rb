@@ -7,6 +7,14 @@ class ComparisonsController < ApplicationController
       Comparison.find(:all, :include => :results, :limit => per_page, :offset => offset)
     end
     @page = @pager.page(params[:page])
+    respond_to do |format|
+      format.html
+      format.js do
+        render :update do |page|
+          page[:comparisons].reload
+        end
+      end
+    end
   end
   
   def new

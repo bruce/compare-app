@@ -1,0 +1,17 @@
+<div id='comparisons'>
+  <% if @page.items.any? %>
+    <%= render :partial => 'pagination.html.erb' %>
+    <table id='comparisons'>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Performance</th>      
+        </tr>
+      </thead>
+      <tbody>
+        <%= render :partial => @page.items %>
+      </tbody>
+    </table>
+    <%= render :partial => 'pagination.html.erb' %>
+  <% end %>
+</div>

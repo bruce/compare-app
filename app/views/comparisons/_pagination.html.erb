@@ -1,0 +1,4 @@
+<ul class='pagination'>
+  <li><%= link_to("Previous Page", comparisons_path(:page => @page.prev.number), :class => 'icon prev') if @page.prev? %></li>
+  <li><%= link_to("Next Page", comparisons_path(:page => @page.next.number), :class => 'icon-right next') if @page.next? %></li>
+</ul>

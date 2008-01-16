@@ -175,6 +175,14 @@ a.add {
 	height: 20px;
 	line-height: 20px;
 	vertical-align: middle;
+	color: #c6ffb2;
+}
+.icon-right {
+	padding-right: 20px;
+	font-size: 0.9em;
+	height: 20px;
+	line-height: 20px;
+	vertical-align: middle;
 }
 ul.actions {
 	list-style: none;
@@ -185,9 +193,6 @@ ul.actions {
 ul.actions li {
 	float: left;
 	margin-right: 1em;
-}
-a.icon {
-	color: #c6ffb2;
 }
 a.show {
 	background: url(/images/icons/magnifier.png) center left no-repeat;
@@ -200,6 +205,12 @@ a.show-code {
 }
 a.edit {
 	background: url(/images/icons/script_edit.png) center left no-repeat;
+}
+a.next {
+	background: url(/images/icons/arrow_right.png) center right no-repeat;
+}
+a.prev {
+	background: url(/images/icons/arrow_left.png) center left no-repeat;
 }
 a.delete {
 	color: red;
@@ -280,4 +291,14 @@ td[class="version success"] {
 }
 td[class="version failure"] {
 	background: #c26161 url(/images/version_failure.png) top left repeat-x;
+}
+.pagination {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	height: 40px;
+}
+.pagination li {
+	float: left;
+	margin-right: 1em;
 }
