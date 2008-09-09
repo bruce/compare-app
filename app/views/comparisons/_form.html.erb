@@ -18,7 +18,7 @@
           <%= f.file_field :file %>
         </p>
       </li>
-      <p class='note'>The code will be executed on Ruby <%= Comparison::VERSIONS.keys.sort.to_sentence %>.</p>
+      <p class='note'>The code will be executed on Ruby <%= EXECUTABLES.keys.sort.to_sentence %>.</p>
       <%= submit_tag "Save" %>
     </ul>
   </fieldset>

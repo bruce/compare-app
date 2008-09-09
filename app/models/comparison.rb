@@ -2,11 +2,6 @@ require 'open4'
 
 class Comparison < ActiveRecord::Base
   
-  VERSIONS = {
-    '1.8' => '/usr/bin/ruby',
-    '1.9' => '/usr/local/bin/ruby1.9'
-  }
-  
   has_many :results, :order => 'version asc', :dependent => :destroy
   
   validates_presence_of :name
@@ -41,7 +36,7 @@ class Comparison < ActiveRecord::Base
 
   def execute
     results.destroy_all
-    VERSIONS.each do |number, executable|
+    EXECUTABLES.each do |number, executable|
       results.create(result_for(executable).merge(:version => number))
     end
   end
