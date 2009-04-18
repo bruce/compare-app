@@ -24,11 +24,14 @@ LEARNING/EXPLORATORY TOOL.
 
 ## Installation
 
-1. Get a copy of the source.
-2. Modify `config/database.yml` to your liking.
-3. Create databases if necessary, and run `rake db:migrate`
-3. Run `ruby script/server`
-4. Go forth and hack.
+Get a copy of the source, and modify `config/database.yml` to your liking.
+
+    sudo rake gems:install
+    rake db:create
+    rake db:migrate
+    ruby script/server
+
+Go forth and compare.
 
 ## Limitations
 
