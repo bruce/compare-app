@@ -30,8 +30,10 @@ Get a copy of the source, and modify `config/database.yml` to your liking.
     rake db:create
     rake db:migrate
     ruby script/server
+    
+You'll probably want to modify `EXECUTABLES` in `config/initializers/executables.rb` to point to the Ruby implementations you want to run.
 
-Go forth and compare.
+Go forth and compare!
 
 ## Limitations
 
