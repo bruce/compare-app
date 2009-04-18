@@ -5,7 +5,7 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-#RAILS_GEM_VERSION = '2.0.2' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -40,6 +40,9 @@ Rails::Initializer.run do |config|
     :session_key => '_compare_session',
     :secret      => 'e901544ece77d38721c5eaf76caccb2103a481c6dd2862eabecc69aba6a3f391ac9027db5b887cfc7f55819672ba653b9e095f68e8396ad6fa73525fdb2a06d3'
   }
+  
+  config.gem 'RedCloth'
+  config.gem 'open4'
 
   # Use the database for sessions instead of the cookie-based default,
   # which shouldn't be used to store highly confidential information
