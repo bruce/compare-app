@@ -19,13 +19,13 @@ LEARNING/EXPLORATORY TOOL.
 
 # Dependencies
 
-1. The `open4` gem (`sudo gem install open4`)
-2. Rails 2+
+1. The `open4` and `RedCloth` gems (`sudo rake gems:install`)
+2. Rails 2.3+
 
 ## Installation
 
 1. Get a copy of the source.
-2. Modify `config/database.ym` to your liking.
+2. Modify `config/database.yml` to your liking.
 3. Create databases if necessary, and run `rake db:migrate`
 3. Run `ruby script/server`
 4. Go forth and hack.
